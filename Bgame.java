@@ -1,9 +1,3 @@
-/******
-*@Programa: Papeleria
-*Autor:    Bernabe Torres David Leónidas
-*Fecha:    04/08/2022
-*Descripción: 
-*******/
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
