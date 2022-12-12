@@ -14,6 +14,16 @@ public class Bgame extends JFrame implements ActionListener {
 
     private JLabel[] lb = new JLabel[10];
     private JButton[] btn =  new JButton[3];
+
+    private JButton[] btp =  new JButton[6]; //Piezas instrucciones
+    private String img[]={"pawn.png","bishop.png","knight.png","towers.png", "queen.png","king.png"};
+    private String ins[]={"Peones: Se mueven una unidad para adelante y comen en diagonal. Excepto en el primer movimiento, donde tiene la posibilidad de avanzar 1 o 2 casillas" ,
+        "Alfil: Come y se desplaza en diagonal las unidades que le sean posibles.", "Caballo: Elimina y se desplaza en L una vez por turno.",
+         "Torre:  Se desplaza y ataca horizontalmente las unidades que sean posibles.", 
+         "Reina: Avanza en diagonal y horizontalmente las unidades que le sean posibles.",
+        "Rey: Avanza una unidad a la redonda y ataca dentro de ese rango. "
+        };
+
     private String bt[]={"Cerrar aplicacion", "Jugar", "Continuar"};
     private JPasswordField pw;
     private JTextField usr;
@@ -80,7 +90,21 @@ public class Bgame extends JFrame implements ActionListener {
             btn[e].setBounds(x, 280, 140, 40);
             ventana.add(btn[e]);
             btn[e].addActionListener( this); 
+
+
         }
+
+        for(int e=0, i=0; e<6; e++, i+=100) {
+            btp[e] = new JButton (new ImageIcon(""+img[e]));
+            btp[e].setBounds(100+i,130,100,100);
+            btp[e].setBackground(Color.white);
+            btp[e].setVisible(false);
+            ventana.add(btp[e]);
+            btp[e].addActionListener(this);
+            
+            
+        }
+
 
     }
 
@@ -91,12 +115,25 @@ public class Bgame extends JFrame implements ActionListener {
         if(origen == btn[1]){
             for(int e=1; e<7; e++) lb[e].setVisible(false);
             for(int e=0; e<2; e++) btn[e].setVisible(false);
+            for(int e=0; e<6; e++) btp[e].setVisible(true);
             pw.setVisible(false);
             usr. setVisible(false);
             lb[0].setBounds(260,0,280,80);
             btn[2].setVisible(true);
 
-        } else if(origen == btn[2]) Game.main(a);
+            
+
+        } 
+        else if (origen==btp[0]) JOptionPane.showMessageDialog(null, "" +ins[0]); //Mejorar 
+        else if (origen==btp[1]) JOptionPane.showMessageDialog(null, "" +ins[1]);
+        else if (origen==btp[2]) JOptionPane.showMessageDialog(null, "" +ins[2]);
+        else if (origen==btp[3]) JOptionPane.showMessageDialog(null, "" +ins[3]);
+        else if (origen==btp[4]) JOptionPane.showMessageDialog(null, "" +ins[4]);
+        else if (origen==btp[5]) JOptionPane.showMessageDialog(null, "" +ins[5]);
+
+        else if(origen == btn[2]) Game.main(a);
+
+
         else System.exit(0);
                 
 
@@ -105,4 +142,4 @@ public class Bgame extends JFrame implements ActionListener {
 }
 
 // Hi this is a prove of actualization of code in git-hub 
-
+// Hi!
